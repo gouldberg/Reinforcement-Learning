@@ -1,0 +1,7 @@
+
+pygame環境を使って人力でデモデータを作る（逆強化学習などのため）
+https://tech.morikatron.ai/entry/2020/10/12/100000
+https://github.com/openai/gym/blob/master/gym/utils/play.py
+
+
+

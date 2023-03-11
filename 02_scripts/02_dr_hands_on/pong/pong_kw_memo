@@ -1,0 +1,158 @@
+
+#####################################################################
+# PongNoFrameskip-v4 by Deep Q-Learning (DeepWater machine)
+#####################################################################
+
+REPLAY_SIZE = 10000
+REPLAY_START_SIZE = 10000
+LEARNING_RATE = 1e-4
+optimizer: Adam
+EPSILON_START = 1.0
+EPSILON_FINAL = 0.01
+epsilon = EPSILON_START
+EPSILON_DECAY_LAST_FRAME = 150000
+MEAN_REWARD_BOUND = 19
+GAMMA = 0.99
+BATCH_SIZE = 32
+SYNC_TARGET_FRAMES = 1000
+ 
+  --> solved in 723,991 frames,  92 min
+      speed:  around 127-128 f/s
+
+
+#####################################################################
+# PongNoFrameskip-v4 by Deep Q-Learning (DeepWater machine)
+#####################################################################
+
+'env_name':         "PongNoFrameskip-v4",
+'stop_reward':      18.0,
+'run_name':         'pong',
+'replay_size':      100000,
+'replay_initial':   10000,
+'target_net_sync':  1000,
+'epsilon_frames':   10**5,
+'epsilon_start':    1.0,
+'epsilon_final':    0.02,
+'learning_rate':    0.0001,
+'gamma':            0.99,
+'batch_size':       32
+
+
+# ----------------------------------------------------------
+# PTAN, 2-steps_count = 4
+# rltf2/runs/2022-12-25T2208-pong-02_nsteps=4
+
+	exp_source = ptan.experience.ExperienceSourceFirstLast(env, agent, gamma=params.gamma, steps_count=4)
+	loss_v = calc_loss_dqn(batch, net, tgt_net.target_model, gamma=params.gamma ** n, device=device)
+
+	-->
+	Game solved in 0:53:14, after 245 episodes and 412004 iterations!
+	State:
+		iteration: 412004
+		epoch: 1
+		epoch_length: <class 'NoneType'>
+		max_epochs: 1
+		output: <class 'dict'>
+		batch: <class 'list'>
+		metrics: <class 'dict'>
+		dataloader: <class 'generator'>
+		seed: <class 'NoneType'>
+		times: <class 'dict'>
+		episode: 245
+		episode_reward: 21.0
+		episode_steps: 1624
+
+
+
+# ----------------------------------------------------------
+# PTAN, 3-Double DQN
+# 2022-12-25T2324-pong-03_double=True
+
+	Game solved in 2:17:48, after 481 episodes and 953771 iterations!
+	State:
+		iteration: 953771
+		epoch: 1
+		epoch_length: <class 'NoneType'>
+		max_epochs: 1
+		output: <class 'dict'>
+		batch: <class 'list'>
+		metrics: <class 'dict'>
+		dataloader: <class 'generator'>
+		seed: <class 'NoneType'>
+		times: <class 'dict'>
+		episode: 481
+		episode_reward: 21.0
+		episode_steps: 1636
+		eval_states: <class 'numpy.ndarray'>
+
+
+# ----------------------------------------------------------
+# PTAN, 4-NoisyNetworks
+# NOISY_SNR_EVERY_ITERS = 100
+# STATES_TO_EVALUATE = 1000
+# EVAL_EVERY_FRAME = 100
+
+
+	Game solved in 1:39:09, after 341 episodes and 701760 iterations!
+	State:
+		iteration: 701760
+		epoch: 1
+		epoch_length: <class 'NoneType'>
+		max_epochs: 1
+		output: <class 'dict'>
+		batch: <class 'list'>
+		metrics: <class 'dict'>
+		dataloader: <class 'generator'>
+		seed: <class 'NoneType'>
+		times: <class 'dict'>
+		episode: 341
+		episode_reward: 21.0
+		episode_steps: 1628
+
+
+# ----------------------------------------------------------
+# PTAN, 5-Priority Replay Buffer, PRIO_REPLAY_ALPHA = 0.6
+# 2022-12-26T2058-pong-05_prio_replay
+
+	Game solved in 1:56:41, after 355 episodes and 801732 iterations!
+	State:
+		iteration: 801732
+		epoch: 1
+		epoch_length: <class 'NoneType'>
+		max_epochs: 1
+		output: <class 'dict'>
+		batch: <class 'tuple'>
+		metrics: <class 'dict'>
+		dataloader: <class 'generator'>
+		seed: <class 'NoneType'>
+		times: <class 'dict'>
+		episode: 355
+		episode_reward: 20.0
+		episode_steps: 1758
+
+
+# ----------------------------------------------------------
+# PTAN, 6-Dueling DQN
+# STATES_TO_EVALUATE = 1000
+# EVAL_EVERY_FRAME = 100
+# 2022-12-27T0747-pong-06_dueling
+
+	Game solved in 1:42:13, after 362 episodes and 699555 iterations!
+	State:
+		iteration: 699555
+		epoch: 1
+		epoch_length: <class 'NoneType'>
+		max_epochs: 1
+		output: <class 'dict'>
+		batch: <class 'list'>
+		metrics: <class 'dict'>
+		dataloader: <class 'generator'>
+		seed: <class 'NoneType'>
+		times: <class 'dict'>
+		episode: 362
+		episode_reward: 21.0
+		episode_steps: 1797
+		eval_states: <class 'numpy.ndarray'>
+
+
+
